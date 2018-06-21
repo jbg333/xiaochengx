@@ -8,9 +8,8 @@
   <packaging>jar</packaging>
 
   <name>weixin-feign</name>
-  <url>http://maven.apache.org</url>
-
-  	<parent>
+  <description>feign接口项目</description>
+	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.3.RELEASE</version>
@@ -24,19 +23,73 @@
 		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
 	</properties>
 
+	<dependencies>
+			
+		<dependency>
+			<groupId>com.jia.weixin</groupId>
+			<artifactId>weixin-pojo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		 <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+          <dependency>
+       		<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-archaius</artifactId>
+		</dependency>
+        <dependency>
+       		<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+		<dependency>  
+		    <groupId>org.springframework.boot</groupId>  
+		    <artifactId>spring-boot-starter-web</artifactId>  
+		</dependency>
+	</dependencies>
 
-  <dependencies>
-  
-	  <dependency>
-	    <groupId>org.springframework.cloud</groupId>
-	    <artifactId>spring-cloud-starter-feign</artifactId>
-	</dependency>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<!-- 注意： 这里必须要添加， 否者各种依赖有问题  -->    
+	<repositories>    
+	    <repository>    
+	        <id>spring-milestones</id>    
+	        <name>Spring Milestones</name>    
+	        <url>https://repo.spring.io/libs-milestone</url>    
+	        <snapshots>    
+	            <enabled>false</enabled>    
+	        </snapshots>    
+	    </repository>    
+	</repositories> 
 	
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+  
+  
 </project>
