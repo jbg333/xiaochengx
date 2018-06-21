@@ -11,5 +11,6 @@ public class WeixinApiApplication {
 	public static void main(String[] args) {
 		
 		SpringApplication.run(WeixinApiApplication.class, args);
+		
 	}
 }
