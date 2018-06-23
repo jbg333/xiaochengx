@@ -17,7 +17,7 @@ public interface ILoginPage {
 	 * @param person
 	 * @return
 	 */
-	@RequestMapping(value = { "/login" }, method = {RequestMethod.POST})
+	@RequestMapping(value = { "/pageone/login" }, method = {RequestMethod.POST})
 	public Rt<List<Person>> login(@RequestBody Person person);
 	
 	/**
@@ -25,7 +25,7 @@ public interface ILoginPage {
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping(value = { "/info/{userId}" }, method = {RequestMethod.GET})
+	@RequestMapping(value = { "/pageone/info/{userId}" }, method = {RequestMethod.GET})
 	public Rt<List<StandingBook>> getUserList(@PathVariable("userId")  Long userId);
 	
 	
@@ -35,7 +35,7 @@ public interface ILoginPage {
 	 * @param rowId
 	 * @return
 	 */
-	@RequestMapping(value = { "/upt/{userId}/{rowId}" }, method = {RequestMethod.PUT})
+	@RequestMapping(value = { "/pageone/upt/{userId}/{rowId}" }, method = {RequestMethod.PUT})
 	public Rt<String> markRepay(@PathVariable("userId")  Long userId ,@PathVariable("rowId") Long rowId);
 	
 	
@@ -44,6 +44,6 @@ public interface ILoginPage {
 	 * @param book
 	 * @return
 	 */
-	@RequestMapping(value = { "/save" }, method = {RequestMethod.POST})
+	@RequestMapping(value = { "/pageone/save" }, method = {RequestMethod.POST})
 	public Rt<String> saveBook(@RequestBody StandingBook book);
 }
