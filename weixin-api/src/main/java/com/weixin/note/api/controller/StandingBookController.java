@@ -17,7 +17,7 @@ public class StandingBookController {
 	@RequestMapping("/test/{name}")
 	public String testApi(@PathVariable("name") String name) {
 		System.out.println(name);
-	//	apiLoginPage.markRepay(100l, 99l);
+		apiLoginPage.markRepay(100l, 99l);
 		return "调用成功";
 	}
 

@@ -2,13 +2,13 @@ package com.weixin.note.serv.controller;
 
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jia.weixin.feign.loginpage.ILoginPage;
 import com.weixin.util.Rt;
 import com.weixin.vo.Person;
 import com.weixin.vo.StandingBook;
-@Controller
+@RestController
 public class LoginPageController implements ILoginPage{
 
 	@Override

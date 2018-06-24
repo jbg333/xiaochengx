@@ -35,7 +35,7 @@ public interface ILoginPage {
 	 * @param rowId
 	 * @return
 	 */
-	@RequestMapping(value = { "/pageone/upt/{userId}/{rowId}" }, method = {RequestMethod.PUT})
+	@RequestMapping(value = { "/pageone/upt/{userId}/{rowId}" }, method = {RequestMethod.GET})
 	public Rt<String> markRepay(@PathVariable("userId")  Long userId ,@PathVariable("rowId") Long rowId);
 	
 	
