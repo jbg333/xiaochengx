@@ -18,7 +18,7 @@ public class StandingBookController {
 	public String testApi(@PathVariable("name") String name) {
 		System.out.println(name);
 		apiLoginPage.markRepay(100l, 99l);
-		return "调用成功";
+		return "调用成功(为什么不成功)";
 	}
 
 }
