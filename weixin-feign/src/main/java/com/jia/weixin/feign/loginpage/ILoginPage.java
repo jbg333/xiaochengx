@@ -2,6 +2,8 @@ package com.jia.weixin.feign.loginpage;
 
 import java.util.List;
 
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,13 +13,18 @@ import com.weixin.util.Rt;
 import com.weixin.vo.Person;
 import com.weixin.vo.StandingBook;
 
+//import feign.Headers;
+//@Component
+//@FeignClient(value = "note-service",path="/pageone")
+//@Headers({ "Accept: application/json", "Content-Type: application/json" })
+@RequestMapping("/pageone")
 public interface ILoginPage {
 	/**
 	 * 登录接口
 	 * @param person
 	 * @return
 	 */
-	@RequestMapping(value = { "/pageone/login" }, method = {RequestMethod.POST})
+	@RequestMapping(value = { "/login" }, method = {RequestMethod.POST})
 	public Rt<List<Person>> login(@RequestBody Person person);
 	
 	/**
@@ -25,7 +32,7 @@ public interface ILoginPage {
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping(value = { "/pageone/info/{userId}" }, method = {RequestMethod.GET})
+	@RequestMapping(value = { "/info/{userId}" }, method = {RequestMethod.GET})
 	public Rt<List<StandingBook>> getUserList(@PathVariable("userId")  Long userId);
 	
 	
@@ -35,7 +42,7 @@ public interface ILoginPage {
 	 * @param rowId
 	 * @return
 	 */
-	@RequestMapping(value = { "/pageone/upt/{userId}/{rowId}" }, method = {RequestMethod.GET})
+	@RequestMapping(value = { "/upt/{userId}/{rowId}" }, method = {RequestMethod.GET})
 	public Rt<String> markRepay(@PathVariable("userId")  Long userId ,@PathVariable("rowId") Long rowId);
 	
 	
@@ -44,6 +51,6 @@ public interface ILoginPage {
 	 * @param book
 	 * @return
 	 */
-	@RequestMapping(value = { "/pageone/save" }, method = {RequestMethod.POST})
+	@RequestMapping(value = { "/save" }, method = {RequestMethod.POST})
 	public Rt<String> saveBook(@RequestBody StandingBook book);
 }
