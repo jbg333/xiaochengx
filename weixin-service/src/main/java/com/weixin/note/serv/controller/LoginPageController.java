@@ -5,8 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jia.weixin.feign.loginpage.ILoginPage;
@@ -17,13 +16,11 @@ import com.weixin.vo.StandingBook;
 public class LoginPageController implements ILoginPage{
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Override
-	public Rt<List<Person>> login(Person person) {
-		// TODO Auto-generated method stub
+	public Rt<List<Person>> login(@RequestBody Person person) {
 		return null;
 	}
 
 	@Override
-	@RequestMapping(value = { "/info/{userId}" }, method = {RequestMethod.GET})
 	public Rt<List<StandingBook>> getUserList(@PathVariable("userId") Long userId) {
 		System.out.println("===========调用Service=========="+userId+"======");
 		logger.info("测试日志{a}={b}", userId);
@@ -31,16 +28,22 @@ public class LoginPageController implements ILoginPage{
 	}
 
 	@Override
-	public Rt<String> markRepay(Long userId, Long rowId) {
+	public Rt<String> markRepay(@PathVariable("userId") Long userId, @PathVariable("rowId")Long rowId) {
 		System.out.println("===========调用Service=========="+userId+"===="+rowId+"======");
 		logger.info("测试日志{a}={b}", userId,rowId);
 		return Rt.ok("操作成功");
 	}
 
 	@Override
-	public Rt<String> saveBook(StandingBook book) {
-		// TODO Auto-generated method stub
+	public Rt<String> saveBook(@RequestBody StandingBook book) {
 		return null;
 	}
 
+	@Override
+	public Rt<String> deltest(@PathVariable("userId") Long userId, Long id,Long id2) {
+		logger.info("====={}============={}=========",userId,id,id2);
+		return null;
+	}
+
+	
 }

@@ -23,11 +23,12 @@ public class StandingBookController {
 	public String testApi(@PathVariable("name") String name) {
 		System.out.println(name);
 		//apiLoginPage.markRepay(100l, 99l);
-		//Rt<List<StandingBook>> rt = apiLoginPage.getUserList(101l);
+		Rt<List<StandingBook>> rt = apiLoginPage.getUserList(101l);
 		Person p = new Person();
 		p.setAge(100);
 		p.setName("贾彬国");
 		apiLoginPage.login(p);
+		apiLoginPage.deltest(8l, 9l,10l);
 		return "调用成功(为什么不成功)";
 	}
 

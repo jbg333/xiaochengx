@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.weixin.util.Rt;
 import com.weixin.vo.Person;
@@ -45,6 +46,9 @@ public interface ILoginPage {
 	@RequestMapping(value = { "/upt/{userId}/{rowId}" }, method = {RequestMethod.GET})
 	public Rt<String> markRepay(@PathVariable("userId")  Long userId ,@PathVariable("rowId") Long rowId);
 	
+	@RequestMapping(value = { "/del/{userId}" }, method = {RequestMethod.DELETE})
+	public Rt<String> deltest(@PathVariable("userId")Long userId,@RequestParam("id")Long id,@RequestParam("id2")Long id2);
+	
 	
 	/**
 	 * 保存一条记账记录
@@ -53,4 +57,7 @@ public interface ILoginPage {
 	 */
 	@RequestMapping(value = { "/save" }, method = {RequestMethod.POST})
 	public Rt<String> saveBook(@RequestBody StandingBook book);
+	
+	
+	
 }
