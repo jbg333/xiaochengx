@@ -12,18 +12,11 @@
 	<description>微信后台</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.jia.weixin.parent</groupId>
+		  <artifactId>weixin-parent</artifactId>
+  			<version>1.0</version>
+		<relativePath/>
 	</parent>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
-	</properties>
 
 	<dependencies>
 	
@@ -41,18 +34,10 @@
 		
 		<dependency>
 			<groupId>com.jia.weixin</groupId>
-			<artifactId>weixin-pojo</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.jia.weixin</groupId>
 			<artifactId>weixin-feign</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+		
 		  <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -65,10 +50,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	<!-- 	<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
@@ -85,11 +66,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>  -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
