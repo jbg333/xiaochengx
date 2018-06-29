@@ -16,6 +16,16 @@ public class Rt<T> {
 	 * 业务数据
 	 */
 	private T data;
+	
+	private T page;
+	
+	public T getPage() {
+		return page;
+	}
+
+	public void setPage(T page) {
+		this.page = page;
+	}
 
 	public int getCode() {
 		return code;
@@ -58,9 +68,13 @@ public class Rt<T> {
 	}
 
 	public static <T>  Rt<T> ok(T data) {
-		Rt<T> result = new Rt<T>(data);
+		Rt<T> result = new Rt<T>();
 		if(data instanceof String) {
 			result.mes = (String) data;
+		}else if(data instanceof RtPageUtils ) {
+			result.page = data;
+		}else {
+			result.data = data;
 		}
 		result.setCode(200);
 		return result;

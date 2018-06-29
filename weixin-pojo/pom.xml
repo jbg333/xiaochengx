@@ -12,9 +12,36 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+   	<!-- <commons-io.version>2.6</commons-io.version>  -->
+	<commons-lang3.vesrion>3.7</commons-lang3.vesrion> 
   </properties>
 
   <dependencies>
+  	
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.vesrion}</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency> -->
+		
+		<!-- xss过滤组件 -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+			<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+  	
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

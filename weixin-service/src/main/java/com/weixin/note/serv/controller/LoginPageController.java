@@ -12,15 +12,22 @@ import com.jia.weixin.feign.loginpage.ILoginPage;
 import com.weixin.util.Rt;
 import com.weixin.vo.Person;
 import com.weixin.vo.StandingBook;
+
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 @RestController
 public class LoginPageController implements ILoginPage{
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	@Override
+	
+	
+	@ApiOperation(value="用户登录", notes="提交")
+	@ApiImplicitParam(name = "person", value = "用户实体", required = true, dataType = "Person", paramType = "body")
 	public Rt<List<Person>> login(@RequestBody Person person) {
 		return null;
 	}
 
-	@Override
+	@ApiOperation(value="用户登录", notes="提交")
+	@ApiImplicitParam(name = "userId", value = "用户id", required = true, dataType = "long", paramType = "path")
 	public Rt<List<StandingBook>> getUserList(@PathVariable("userId") Long userId) {
 		System.out.println("===========调用Service=========="+userId+"======");
 		logger.info("测试日志{a}={b}", userId);
