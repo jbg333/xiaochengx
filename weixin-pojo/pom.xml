@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-   	<!-- <commons-io.version>2.6</commons-io.version>  -->
+    <commons-io.version>2.6</commons-io.version>  
 	<commons-lang3.vesrion>3.7</commons-lang3.vesrion> 
   </properties>
 
@@ -23,11 +23,11 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3.vesrion}</version>
 		</dependency>
-		<!-- <dependency>
+		 <dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io.version}</version>
-		</dependency> -->
+		</dependency>
 		
 		<!-- xss过滤组件 -->
 		<dependency>

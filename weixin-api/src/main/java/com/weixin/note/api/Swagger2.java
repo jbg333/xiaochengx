@@ -1,4 +1,4 @@
-package com.weixin.note.serv;
+package com.weixin.note.api;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,14 +24,14 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.weixin.note.serv"))
+                .apis(RequestHandlerSelectors.basePackage("com.weixin.note.api.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("微信服务层RESTful APIs")
+                .title("微信api层RESTful APIs")
                 .description("service管理项目")
                 .termsOfServiceUrl("http://admin.gonghuikeji.com/")
                 .version("1.0")
