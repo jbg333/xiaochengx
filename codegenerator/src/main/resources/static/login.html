@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/statics/img/icon.png" type="image/x-icon">
+    <title>登录</title>
+    <script type="text/javascript" src="/statics/libs/jquery-1.7.2/jquery.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .header{
+            height: 96px;
+            border-bottom: 2px solid #e4e8ed;
+            margin-bottom: 26px;
+        }
+        .public-container{
+            width: 100%;
+            margin: 0 auto;
+            max-width: 1200px;
+            min-width: 600px;
+        }
+        .clearBoth:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+        .logo{
+            margin-top: 16px;
+            float: left;
+        }
+        /*欢迎登录*/
+        .wel-login{
+            font-size: 20px;
+            line-height:96px;
+            font-weight: bold;
+            margin-left:34px ;
+            float: left;
+        }
+        /*---------------------------*/
+        .login-main{
+            background-color: #7cd2f6;
+            padding: 56px 22px 56px 0;
+        }
+        .login-main-txt{
+            width: 450px;
+            height: 550px;
+            background-color: white;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+        .login-main-txt h2{
+            font-size: 24px;
+            color: #484747;
+            height: 160px;
+            line-height: 160px;
+            text-align: center;
+        }
+        .login-main-txt .inp{
+            width: 358px;
+            height: 40px;
+            margin: 0 auto 52px auto;
+        }
+        .login-main-txt .inp .inp-border{
+            line-height: 42px;
+            border: 1px solid #bfbfbf;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            height:42px;
+        }
+        .login-main-txt .inp .tip-01{
+            float: left;
+            font-size: 14px;
+            color: #666666;
+            width: 86px;
+            height: 40px;
+            text-align: center;
+            background-color: #d2d2d2;
+        }
+        .inp-border input{
+            width: calc(100% - 86px);
+            height: 40px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border: none;
+            float: right;
+            text-indent: 5px;
+        }
+        .login-main-txt .inp .tip-02{
+            font-size: 12px;
+            color: #f30404;
+            margin-left: 92px;
+        }
+        .btn{
+            border: none;
+            background-color: #0099cc;
+            color: #ffffff;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /*------------------*/
+        .footer{
+            height: 200px;
+            background-color: #626262;
+        }
+        .copyright{
+           padding-top: 60px;
+            text-align: center;
+            font-size: 14px;
+            color: #dfdbdb;
+        }
+    </style>
+    <script>
+    $(document).keyup(function(event){
+        if(event.keyCode ==13){
+        	login ();
+        }
+    });
+
+    //登录按钮事件
+    function login () {
+    	$("#usernameSpan").css("display", "none");
+    	$("#passwordSpan").css("display", "none");
+    	$("#captchaSpan").css("display", "none");
+    	$("#errorSpan").css("display", "none");
+    	
+       	if ($("#username").val() == "") {
+       		$("#username").focus();
+       		$("#usernameSpan").css("display", "");
+       		return ;
+       	}
+    	if ($("#password").val() == "") {
+       		$("#password").focus();
+       		$("#passwordSpan").css("display", "");
+       		return ;
+       	}
+    	if ($("#captcha").val() == "") {
+       		$("#captcha").focus();
+       		$("#captchaSpan").css("display", "");
+       		return ;
+       	}
+    	
+        var datas = "username=" + $("#username").val() + "&password=" + $("#password").val() + "&captcha=" + $("#captcha").val();
+        $.ajax({
+            type: "POST",
+            url: "/sys/login",
+            data: datas,
+            dataType: "json",
+            success: function (result) {
+                if (result.code == 0 || result.code == 200) {//登录成功                	
+                    parent.location.href = '/index.html';
+                } else {
+                	$("#errorSpan").html(result.msg);
+                	$("#errorSpan").css("display", "");
+                    refreshCode();
+                }
+            }
+        });
+        return false;
+    }
+    function refreshCode(){
+        var captcha = document.getElementById("captchaImg");
+        captcha.src = "/captcha.jpg?t=" + new Date().getTime();
+    }
+
+    </script>
+</head>
+<body>
+<!--公共header-->
+<div class="header">
+    <div class="public-container clearBoth">
+        <div class="logo">
+            <img src="statics/img/header-logo.png" alt="">
+        </div>
+        <div class="wel-login">工汇科技运营管理后台</div>
+    </div>
+</div>
+<div class="login-main">
+    <div class="login-main-txt">
+        <h2>登录工汇账号</h2>
+        <div class="inp">
+            <div class="inp-border">
+                <span class="tip-01">账号</span>
+                <input type="text" placeholder="请输入账号" maxlength="50" id="username" name="username" value="">
+            </div>
+            <span id="usernameSpan" class="tip-02 phone-tip" style="display: none">*手机号不能为空</span>
+        </div>
+        <div class="inp">
+            <div class="inp-border">
+                <span class="tip-01">密码</span>
+                <input type="password" placeholder="请输入密码" id="password" name="password" value="">
+            </div>
+            <span id="passwordSpan" class="tip-02 pwd-tip" style="display: none">*密码不能为空</span>
+        </div>
+        <div class="inp">
+            <div class="inp-border">
+                <span class="tip-01">验证码</span>
+                <input type="text" placeholder="请输验证码" id="captcha" name="captcha" value="" style="width: calc(100% - 202px); float: left;">
+                <img id="captchaImg" src="/captcha.jpg" width="116" height="40" style="cursor: pointer" onclick="refreshCode(this)">
+            </div>
+            <span id="captchaSpan" class="tip-02 pwd-tip" style="display: none">*验证码不能为空</span>
+            <span id="errorSpan" class="tip-02 phone-tip" style="display: none"></span>
+        </div>
+        <div class="inp button">
+            <input class="inp btn" type="button" id="login" value="登录" onclick="login()">
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="copyright">
+        <p>Copyright @2017-2018 工汇（北京）科技有限公司 京ICP备18003946号</p>
+        <p>地址：北京市朝阳区阜通东大街59号北京宜家办公楼3-5层</p>
+    </div>
+</div>
+</body>
+</html>

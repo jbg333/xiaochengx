@@ -1,0 +1,420 @@
+.login-main{
+    background-color: #ffffff;
+    padding: 0;
+}
+/*失去焦点提示语*/
+.tip-02{
+    font-size: 12px !important;
+    color: #f30404;
+    margin-left: 130px;
+    margin-top: 4px;
+}
+/*创建配置包*/
+.body{
+    position: relative;
+}
+.new-package {
+    width: 116px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #666666;
+    margin: 20px 0;
+    cursor: pointer;
+}
+.package-kind{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.package-kind li{
+    position: relative;
+    width: 132px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-bottom: 2px solid #eeeeee;
+    cursor: pointer;
+}
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #0099cc;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 10px;
+    text-align: center;
+    font-size: 12px;
+    line-height:18px;
+    color: #4cb7db;
+}
+/*选中当前配置包*/
+.package-current{
+    border-bottom: 2px solid #4cb7db !important;
+    color: #4cb7db;
+}
+/*选中当前项目和数目*/
+.kind-current{
+    background: #4cb7db;
+    color: #ffffff !important;
+
+}
+/*项目分类*/
+.project-kind li{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #4cb7db;
+    color: #4cb7db;
+    margin-right: 30px;
+    cursor: pointer;
+}
+/*项目图像显示区*/
+.item-kind{
+    width: 100%;
+    margin-bottom: 110px;
+}
+.item-kind li{
+    width: 196px;
+    border: 1px solid #f2f2f2;
+    box-shadow:0 0 1px 1px #f2f2f2;
+    margin-right: 54px;
+    margin-bottom: 58px;
+}
+.margin-r0{
+    margin-right: 0 !important;
+}
+.item-pic{
+    position: relative;
+    margin-bottom: 4px;
+}
+/*已使用次数*/
+.item-mask{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 26px;
+    background: rgba(117,116,116,0.6);
+    text-align: center;
+    line-height: 26px;
+    color: #ffffff;
+    font-size: 12px;
+}
+/*图片标识*/
+.item-icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    transform: translate(-50%,-50%);
+    color: #757776;
+}
+/*单价*/
+.price{
+    font-size: 14px;
+    color: #cc0000;
+}
+/*配置包*/
+.package{
+    margin-bottom: 2px;
+}
+/*描述*/
+.describe{
+    font-size: 14px;
+    color: #999999;
+    margin-bottom: 4px;
+}
+/*适用*/
+.apply{
+    font-size: 10px;
+    color: #757474;
+    background-color: #dcdcdc;
+    min-height: 20px;
+    line-height: 20px;
+    padding: 5px ;
+    margin-bottom: 10px;
+}
+.item-del,.item-edit,.item-use {
+    font-size: 12px;
+    color: #7a7b7b;
+    border: 1px solid #7a7b7b;
+    padding: 2px 14px;
+    border-radius: 3px;
+    margin-right: 4px;
+}
+.item-use{
+    background: #0099cc;
+    color: #ffffff;
+    border: 1px solid #0099cc;
+    margin-right:0;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 2px 10px;
+}
+
+/*------遮罩层-------*/
+.new-package-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(213,211,211,0.6);
+    z-index:1;
+}
+
+.mask-content{
+    width: 1200px;
+    height: 100%;/*height和max-height都必须有，只有max-height：并不表示有高度。*/
+    max-height: 80%;
+    margin-top: 36px;
+}
+/* 遮罩层里嵌套的子页面--添加施工项，编辑施工项 */
+.update,.update-add,.update-update{
+    height: 100%;
+}
+.mask-content .mask-title{
+    width: 100%;
+    height: 48px;
+    background-color: #4eadcf;
+    color: #ffffff;
+    line-height: 48px;
+    font-size: 18px;
+    padding: 0 16px;
+    z-index: 99999;
+}
+
+.close{
+    font-size: 30px;
+    cursor: pointer;
+}
+.new-package-content{
+    height:calc( 100% - 48px );/*自动计算，父元素的100%减去title，为自身高度*/
+    background-color: #ffffff;
+    padding-left: 18px;
+    overflow-y: auto;
+}
+.new-package-content span{
+    font-size: 14px;
+}
+.content-name{
+    display: inline-block;
+    width: 110px;
+}
+.mask-input {
+    width: 320px;
+    height: 26px;
+    margin-top: 18px;
+    margin-left: 14px;
+    color: #b6b3b3;
+    font-size: 12px;
+}
+/*规格*/
+.rule-item{
+    width: 88%;
+    margin-left: 18px;
+    font-size: 14px;
+    color: #666666;
+}
+.rule-item label{
+    margin-right: 10px;
+    margin-left: 8px;
+}
+/*施工工艺*/
+.build-item{
+    margin-bottom: 20px;
+}
+.build-item li{
+    position: relative;
+    float: left;
+    width: 200px;
+    color: #666666;
+    margin-right: 45px;
+}
+.rule-item label{
+    font-size: 12px;
+}
+textarea{
+    margin-top: 10px;
+    color: #999999;
+}
+.build-item label,textarea{
+    font-size: 12px;
+}
+.build-item li p{
+    position: absolute;
+    right: 27px;
+    bottom: -16px;
+    /*width: 78px;*/
+    /*height: 16px;*/
+    background-color: #1190bf;
+    color: #ffffff;
+    font-size: 8px !important;
+    padding: 2px 6px;
+    letter-spacing:-2px;
+}
+.desc{
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/*辅材*/
+.fc{
+    margin-left: 14px;
+}
+table, td, th{
+    border: 1px solid #c0bfbe;
+    border-collapse:collapse;
+    color: #666666;
+}
+td, th{
+    width: 135px;
+    height: 34px;
+    text-align: center;
+}
+.fc select{
+    width: 150px;
+    height: 26px;
+    /*margin: 6px;*/
+    color: #b6b3b3;
+}
+.bg{
+    background-color: #e5e5e4;
+    /*color: #666666 !important;*/
+    /*font-weight: bold;*/
+    margin-left: 18px;
+}
+ul.fcsz{/*辅材设置*/
+    height: 106px;
+}
+ul.fcsz li{
+    border-top: 1px solid #c0bfbe;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+}
+ul.fcsz li>div{
+    border-bottom: 1px solid #c0bfbe;
+    border-right: 1px solid #c0bfbe;
+}
+ul.fcsz li:first-child div{
+    border-left: 1px solid #c0bfbe;
+}
+.fcsz-tip{
+    width: 135px;
+}
+.fcsz-con{
+    width: 160px;
+}
+.fcsz li:not(:first-child) div:first-child,.fontSize{
+    font-size: 14px;
+    color: #666666;
+    font-weight: bold;
+}
+.fontColor {
+    color: #666666;
+    font-size: 14px;
+}
+/*配置包单价*/
+.package-price{
+    font-size: 14px;
+    color: #bf1a20;
+}
+/*保存配置包*/
+.btn-item {
+    /*margin: 68px 0 68px 124px; 下边距溢出*/
+    margin: 68px 0 0 124px;
+}
+.btn-item .btn{
+    width: 166px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 28px;
+}
+.un-current{
+    border: 1px solid #bcbaba;
+}
+
+/*-------------配置包详情----------*/
+/*面包屑---见common.css*/
+
+/*配置包内容*/
+.package-details{
+    line-height: 26px;
+}
+.package-details>li{
+    margin-top: 26px;
+}
+/*.package-details>li:last-child{*/
+    /*margin: 26px 0;*/
+/*}*/
+.detail-name{
+    width: 8%;
+    font-size: 16px;
+}
+.detail-content{
+    width: 92%;
+    font-size: 14px;
+}
+.detail-content>p{
+    margin-right: 50px;
+}
+
+
+/*添加配置包--add-package.html*/
+.add-package>li {
+    width: 170px;
+    margin-right: 48px;
+    margin-bottom: 30px;
+}
+.use-package{
+    font-size: 10px;
+    color: #827c79;
+    text-align: center;
+    padding: 14px 0;
+}
+.add-package>li p{
+    margin-bottom: 6px;
+}
+
+/*无配置包*/
+.recommend{
+    position: relative;
+    width:100%;
+    min-height: 1px;
+    border-bottom: 1px solid #e4e8ed;
+    margin-bottom: 64px;
+}
+.recommend>p{
+    position: absolute;
+    top:0;
+    left: 0;
+    transform:translate(470%,-66%);
+    width: 116px;
+    height: 22px;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 20px;
+    color: #999999;
+}
+
+.no-package{
+    text-align: center;
+}
+.no-package .reset-tip-small{
+    font-size: 22px;
+}
+
+
+
+
+
+

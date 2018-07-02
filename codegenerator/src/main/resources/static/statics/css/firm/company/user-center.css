@@ -1,0 +1,595 @@
+/*用户中心*/
+/*左侧菜单*/
+.user-menu{
+    /*width: 18%;*/
+    width: 150px;
+    margin-right: 48px;
+}
+.user-menu li{
+    font-size: 14px;
+    color: #999999;
+    width: 150px;
+    height: 40px;
+    border: 1px solid #b5b5b5;
+    border-bottom: none;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.user-menu li:last-child{
+    border-bottom: 1px solid #b5b5b5;
+}
+.menu-current{
+    background-color: #4cb7db;
+    color: #ffffff !important;
+    border: 1px solid #4cb7db !important;
+}
+/*右侧菜单详情---------账户概览------------------------*/
+.user-menu-detail{
+    width: 1000px;
+}
+.work-speed{
+    width: 100%;
+    border-top: 1px solid #e4e8ed;
+    border-bottom: 1px solid #e4e8ed;
+    padding: 12px 0;
+}
+.company-detail{
+    width: 368px;
+    border-right:1px solid #e4e8ed;
+}
+.company-logo{
+    position: relative;
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    line-height: 90px;
+    margin-left: 10px;
+}
+.company-logo img{
+    padding-top: 5px;
+}
+.logo-circle{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    border-radius: 50%;
+    border: 1px solid #b0b0b0;
+    /*z-index:99;*/
+}
+/*公司名称*/
+.company-name {
+    margin-left: 20px;
+    font-size: 14px;
+    line-height: 26px;
+}
+.company-name>p>img{
+    text-align: left;
+}
+/*不同进度分类*/
+.progress-kind{
+    margin-left: 6px;
+}
+.progress-kind>li{
+    margin-left: 40px;
+    font-size: 14px;
+}
+.progress-kind>li>p{
+    margin-top: 16px;
+}
+.progress-current{
+    color: #4cb7db;
+}
+/*-----施工进度列表------*/
+.work-progress-list{
+    margin-top: 38px;
+}
+.work-progress-list table{
+    width: 100%;
+    margin-bottom: 84px;
+}
+table.pro-list th,table.finance-info th{
+    background-color:#e5e5e5;
+    font-size: 14px;
+}
+.work-progress-list table,th,td,.finance-info-list table,th,td{
+    border: 1px solid #bfbfbf;
+    border-collapse:collapse;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 12px;
+    color: #7a7979;
+}
+.work-progress-list th:first-child{
+    width: 126px;
+}
+.work-progress-list th:nth-child(2){
+    width: 114px;
+}
+.work-progress-list th:nth-child(3){
+    width: 130px;
+}
+.work-progress-list th:nth-child(4){
+    width: 300px;
+}
+.work-progress-list th:nth-child(5),th:nth-child(6),th:last-child{
+    width: 110px;
+}
+table.pro-list a{
+    color: #67b6d9;
+}
+
+
+/*-----财务信息--》财务明细------------*/
+.finance-info{
+    margin-bottom: 54px;
+}
+.finance-info-list th:first-child,th:nth-child(2){
+    width: 180px;
+}
+.finance-info-list th:nth-child(3),th:last-child{
+    width: 150px;
+}
+/*分页*/
+.finance-page{
+    margin-bottom: 70px;
+}
+/*-----财务信息--》申请发票------------*/
+.invoice-tip{
+    width: 1000px;
+    height: 180px;
+    background-color: #fadbdb;
+    color: #cc0000;
+    padding-top: 12px;
+}
+.invoice-tip>div.tip{
+    display: inline-block;
+    margin-left: 42px;
+    width: 28px;
+    height: 28px;
+    background: url("../images/sprite.png") 0 -122px no-repeat;
+}
+.tip-txt>h3{
+    font-size: 14px;
+    line-height: 28px;
+}
+.tip-txt>p{
+    font-size: 12px;
+    line-height: 20px;
+}
+/*列表分类名称*/
+.invoice-menu{
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    background-color: #e5e5e5;
+    font-size: 14px;
+}
+/*订单状态*/
+.ddzt{
+    width: 460px;
+}
+/*发票类型*/
+.fplx{
+    width:200px;
+}
+/*发票状态,操作*/
+.fpzt,.fpcz{
+    width: 164px;
+}
+.fpcz{
+    cursor: pointer;
+}
+/*发票列表*/
+.invoice-list>li{
+    height: 156px;
+    margin-top: 12px;
+    border: 1px solid #d7eff7;
+}
+.item-num{
+    height: 38px;
+    background-color: #d7eff7;
+    font-size: 12px;
+    color: #7a7979;
+    line-height: 38px;
+}
+.item-num>p{
+    margin-left: 18px;
+}
+.invoice-list-item-detail>li:first-child{
+    text-align: left;
+}
+.invoice-list-item-detail>li{
+    height: 118px;
+    border-right: 1px solid #d7eff7;
+    text-align: center;
+    line-height: 118px;
+    font-size: 12px;
+}
+.invoice-list-item-detail>li:last-child{
+    border: none;
+}
+.invoice-list-item-detail-img{
+    width: 116px;
+    padding: 10px 12px;
+}
+
+.invoice-list-address{
+    font-size: 14px;
+    line-height: 30px;
+    margin-top: 12px;
+}
+.invoice-list-money,.invoice-list-time{
+    font-size: 12px;
+    line-height: 30px;
+}
+.invoice-list-money{
+    color: #cc0000;
+}
+.opened{
+    color: #cc0000;
+}
+.invoice-list-item-detail li:last-child{
+color:#0099cc;
+}
+
+/*------------账户安全---》管理子账号---------------*/
+.add-name{
+    font-size: 14px;
+    color: #999999;
+    margin-top: 22px;
+    margin-bottom: 56px;
+}
+.add-btn{
+    display: inline-block;
+    width: 104px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    border: 1px solid #4cb7db;
+    color: #4cb7db;
+    border-radius: 3px;
+}
+.child-list th:first-child{
+    width: 48px;
+}
+.child-list th:nth-child(2),th:nth-child(4),th:nth-child(5){
+    width: 118px;
+}
+.child-list th:nth-child(3){
+    width: 134px;
+}
+.child-list th:nth-child(6){
+    width: 340px;
+}
+.child-list th:last-child{
+    width: 108px;
+}
+.child-operate a {
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+    color: #0099cc;
+}
+/*------------账户安全---》安全中心---------------*/
+.safety-pwd-level{
+    margin-top: 20px;
+}
+.safety-background{
+    position: relative;
+    width: 99px;
+    height: 16px;
+    background-color: #a0a0a0;
+    margin-top: 3px;
+    margin-bottom: 50px;
+}
+.safety-txt{
+    color: #444343;
+}
+.safety-level{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background-color: #009944;
+}
+.safety-level-txt{
+    color: #009944;
+    margin-left: 190px;
+}
+.safety-list{
+    width: 1000px;
+    margin-bottom: 96px;
+}
+.safety-list>li{
+    height: 70px;
+    line-height: 68px;
+    border-bottom: 1px solid #bfbfbf;
+}
+.safety-list>li:first-child{
+    border-top: 1px solid #bfbfbf;
+}
+.safety-list>li>div{
+    border-right:1px solid #bfbfbf;
+}
+.safety-list>li>div:first-child{
+    width: 246px;
+}
+.safety-list>li>div:last-child{
+    width: 754px;
+    padding-left: 28px;
+    padding-right: 16px;
+}
+.safety-list span{
+    display: inline-block;
+}
+.dlmm-danger {
+    width: 32px;
+    height: 32px;
+    background: url("../images/sprite.png") 0 -156px no-repeat;
+    vertical-align: middle;
+}
+.dlmm-success{
+    width: 32px;
+    height: 32px;
+    background: url("../images/sprite.png") -35px -156px no-repeat;
+    vertical-align: middle;
+}
+.dlmm-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-left: 32px;
+}
+.dlmm-tip{
+    font-size: 14px;
+    color: #cc0000;
+}
+.dlmm-modify{
+    font-size: 12px;
+    color: #0099cc;
+}
+.sjyz-tip,.smrz-tip{
+    color: #7a7979;
+}
+.sjyz-tip-red{
+    color: #cc0000;
+}
+.suc{
+    width: 20px;
+    height: 20px;
+    background: url("../images/sprite.png") -30px -100px no-repeat;
+    vertical-align: middle;
+}
+/*安全服务提示*/
+.safety-tip {
+    width: 1000px;
+    height: 120px;
+    background-color: #fadbdb;
+}
+.safety-tip p{
+    line-height: 28px;
+}
+
+
+/*---------用户中心--》意见反馈----------*/
+.feedback input {
+    width: 112px;
+    height: 38px;
+    background-color: #ffffff;
+    color: #666666;
+    border: 1px solid #666666;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.feedback>h3{
+    padding-bottom: 20px;
+}
+.feedback>textarea.feedback-txt{
+    padding: 16px 20px;
+    width:100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    resize: none
+}
+.feedback>#fb-btn{
+    cursor: pointer;
+}
+.feedback>.remindP{
+    color:red;
+    padding:5px 0;
+    font-size: 12px;
+}
+/*弹框*/
+.tankuang{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 10;
+    width:100%;
+    background: rgba(0,0,0,0.5);
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    justify-content: center;
+}
+.tankuang .innerBox{
+    width:400px;
+    height:280px;
+    background: #fff;
+    font-family: '微软雅黑','Microsoft YaHei';
+}
+.tankuang .innerBox .TanKTitle{
+    width:100%;
+    height:40px;
+    background: #1390bf;
+    font-size: 16px;
+    font-weight: bold;
+    text-indent: 10px;
+    line-height: 40px;
+    color:#fff;
+}
+.tankuang .innerBox .TanKBody{
+    width:100%;
+    height:180px;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.tankuang .innerBox .TanKFoter{
+    width:100%;
+    height:60px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    justify-content: space-around;
+}
+.tankuang .innerBox .TanKFoter p{
+    width:100px;
+    height:30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 4px;
+    border:1px solid #7f7f7f;
+    cursor: pointer;
+    font-size: 14px;
+}
+.tankuang .innerBox .TanKFoter p:hover{
+    background: #dedede;
+    color:#1390bf;
+}
+    /*弹框样式*/
+/*---------用户中心--》意见反馈----------*/
+
+/*---------用户中心--》财务信息----------*/
+
+#FinancePage .finance .tapUl{
+    border-bottom:3px solid #dfe4ea;
+    height:44px;
+}
+#FinancePage .finance .tapUl ul li{
+    width: 110px;
+    height: 44px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 3px solid #e4e8ed;
+    cursor: pointer;
+}
+#FinancePage .finance .tapUl ul li.cur{
+    border-bottom-color:#0099cc ;
+    color: #0099cc;
+}
+
+#FinancePage .finance .financeInfo .search{
+    margin: 36px 0;
+    position: relative;
+}
+#FinancePage .finance .financeInfo .search>input {
+    width: 340px;
+    height: 34px;
+    padding-left: 6px !important;
+    text-align: left;
+    color:#404040;
+}
+#FinancePage .finance .financeInfo .search>span.btn {
+    display: inline-block;
+    width: 100px;
+    height: 34px;
+    background-color: #0099cc;
+    color: #ffffff;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 5px;
+    margin-left: 8px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+#FinancePage .finance .financeInfo .search>span.remind {
+    color: red;
+    font-size: 12px;
+    line-height: 30px;
+    height:30px;
+    margin-left: 8px;
+    position: absolute;
+    top:30px;
+    left:0;
+}
+#FinancePage .finance .financeInfo .financeInfoList{
+    width:660px;
+    border:1px solid #bfbfbf;
+}
+#FinancePage .finance .financeInfo .financeInfoList .tableHeader{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    background: #e5e5e5;
+    height:42px;
+    line-height: 42px;
+    border-bottom:1px solid #bfbfbf;
+}
+#FinancePage .finance .financeInfo .financeInfoList .tableHeader li{
+    flex:1;
+    text-align: center;
+    font-size: 14px;
+    color:#666666;
+}
+#FinancePage .finance .financeInfo .financeInfoList .tableHeader li:not(:last-child){
+    border-right:1px solid #bfbfbf;
+}
+#FinancePage .finance .financeInfo .financeInfoList .tableTbody li{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    height:40px;
+    line-height: 40px;
+}
+
+#FinancePage .finance .financeInfo .financeInfoList .tableTbody li:hover{
+    background: #baebf7;
+}
+#FinancePage .finance .financeInfo .financeInfoList .tableTbody li:not(:last-child){
+    border-bottom:1px solid #bfbfbf;
+}
+#FinancePage .finance .financeInfo .financeInfoList .tableTbody li>div{
+    flex:1;
+    text-align: center;
+    font-size: 14px;
+    color:#666666;
+}
+#FinancePage .finance .financeInfo .financeInfoList .tableTbody li>div:not(:last-child){
+    border-right:1px solid #bfbfbf;
+}
+
+/*---------用户中心--》财务信息----------*/
+
+
+
+
+
+
+
+
+
+
