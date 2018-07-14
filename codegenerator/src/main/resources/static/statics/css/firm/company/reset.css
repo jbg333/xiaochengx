@@ -1,0 +1,45 @@
+body,div,p,h1,h2,h3,h4,h5,h6,a,ul,ol,li,dd,dt,dl,span,i,img,input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "微软雅黑";
+    font-size: 16px;
+
+}
+table{
+    border-collapse:collapse;
+}
+th,td{
+    padding:0;
+}
+ul,ol,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.clearBoth:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+input{
+    outline: none;
+}
+.dis-none{
+    display: none;
+}
+[v-cloak]{
+    display: none;
+}
+.loginOut{
+    cursor: pointer;
+}

@@ -1,0 +1,311 @@
+.public-container{
+    width: 1200px;
+    margin: 0 auto;
+}
+.border-bottom{
+    border-bottom: 2px solid #e4e8ed;
+    margin-bottom: 26px;
+}
+/*头部*/
+/*用户中心*/
+.public-use-header{
+    height: 134px;
+    color: #cccccc;
+}
+.public-top{
+    height: 36px;
+    line-height: 36px;
+    background-color: #666666;
+}
+.icon{
+    display: inline-block;
+    width: 24px;
+    height: 36px;
+    background: url("../images/sprite.png")  0 -60px no-repeat;
+    margin-left: 10px;
+}
+.city{
+    margin-left: 6px;
+    font-size: 16px;
+    color: #ffffff;
+}
+.tab-city{
+    margin-left: 2px;
+    font-size: 14px;
+    color: #cccccc;
+}
+.tel>a,.use-num>a{
+    color: #cc0000;
+}
+.tel-icon{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url("../images/sprite.png") -20px -60px no-repeat;
+}
+.use-num{
+    margin-right: 44px;
+}
+.blue-color{
+    color: #0099cc !important;
+}
+/*头部*/
+.public-header{
+    height: 96px;
+}
+/*header--logo*/
+.header-logo{
+    margin-top: 16px;
+}
+/*header--菜单*/
+
+ul.header-nav>li{
+    float: left;
+    margin-right: 44px;
+    line-height: 96px;
+}
+/*ul.header-nav>li:last-child{*/
+    /*margin-right: 0;*/
+/*}*/
+.header-nav a{
+    font-size: 16px;
+    color: #333333;
+}
+/*header--企业登录*/
+.header-login {
+    width: 86px;
+    height: 30px;
+    border-radius: 3px;
+    background-color: #0099cc;
+    margin-top: 32px;
+    text-align: center;
+    line-height: 30px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.header-login a{
+    color: #ffffff;
+}
+.header-app{
+    background-color: #ffffff;
+    border: 1px solid #0099cc;
+    color: #0099cc;
+    margin-right: 6px;
+}
+.current{
+    color: #0099cc !important;
+    border-bottom: 1px solid #0099cc;
+}
+
+/*欢迎登录*/
+.wel-login{
+    font-size: 24px;
+    color: #cc0000;
+    line-height:96px;
+    font-weight: bold;
+    margin-left:34px ;
+}
+
+/*返回主页*/
+.go-index{
+    position: relative;
+    font-size: 16px;
+    color: #333333;
+    line-height: 96px;
+}
+.go-index a{
+    color: #333333;
+}
+.sprite-main{
+    position: absolute;
+    top:26px;
+    left: -40px;
+    width: 40px;
+    height: 34px;
+    background: url("../images/sprite.png") 0 -25px  no-repeat;
+}
+
+
+
+
+/*尾部*/
+.public-footer{
+    text-align: left;
+    width: 100%;
+    background: #f9f9f9;
+    /*margin-top: 92px;*/
+}
+.footer-connect{
+    width: 100%;
+    min-height: 200px;
+    padding-top: 30px;
+    color: #858383;
+    background-color: #f9f9f9;
+}
+.footer-connect:before{
+    display: table;
+    content: "";
+}
+.footer-connect-title{
+    margin-top: 30px;
+    font-size: 22px;
+}
+.footer-connect-content{
+    font-size: 16px;
+}
+.footer-connect-content li{
+    float: left;
+}
+.footer-connect-content a{
+    display: inline-block;
+    padding-right: 60px;
+    color: #858383;
+    line-height: 35px;
+}
+/*尾部--版权*/
+.footer:before{
+    display: table;
+    content: '';
+}
+.footer-copyright{
+    min-height: 450px;
+    padding-top: 50px;
+    background-color: #626262;
+}
+.footer-copyright-nav{
+    width: 20%;
+    margin-top: 30px;
+    color: #ffffff;
+}
+
+.footer-copyright-nav h4{
+    font-size: 16px;
+    line-height: 40px;
+}
+.footer-copyright-nav a{
+    font-size: 14px;
+    line-height: 30px;
+    color: #dfdbdb;
+}
+.footer-copyright-address{
+    margin-top: 130px;
+    text-align: center;
+    font-size: 14px;
+    color: #dfdbdb;
+}
+.sprite{
+    position: relative;
+    top:3px;
+    margin-right: 15px;
+    display: inline-block;
+    width: 30px;
+    height: 21px;
+}
+.wx{
+    background:url("../images/sprite.png") no-repeat 0 0;
+}
+.wb{
+    top:5px;
+    background:url("../images/sprite.png") no-repeat -40px 0;
+}
+.tele{
+    width: 28px;
+    height: 25px;
+    top: 5px;
+    margin-right: 8px;
+    background:url("../images/sprite.png") no-repeat -70px 0;
+}
+.time{
+    font-size: 12px !important;
+}
+
+
+/*常用字体*/
+.com-font-18-01{
+    font-size: 18px;
+    color: #333333;
+}
+.com-font-18-02{
+    font-size: 18px;
+    color: #605f5f;
+}
+.com-font-14{
+    font-size: 14px;
+    color: #888585;
+}
+.lh28{
+    line-height: 28px;
+}
+.mb20{
+    margin-bottom: 20px;
+}
+.mb15{
+    margin-bottom: 15px;
+}
+.com-font-24{
+    font-size: 24px;
+}
+.bold{
+    font-weight: bold;
+}
+.w50{
+    width: 50%;
+}
+.mt30{
+    margin-top: 30px;
+}
+.mr30{
+    margin-right: 30px !important;
+}
+.mb30{
+    margin-bottom: 30px;
+}
+/*重置密码（成功、失败）、创建配置包（无配置包情况下）*/
+.reset-tip-big{
+    font-size: 24px;
+
+    padding-bottom: 16px;
+}
+.reset-success{
+    color: #cc0000;
+}
+.reset-img{
+    padding-top: 94px;
+    padding-bottom: 42px;
+}
+.reset-tip-small{
+    font-size: 14px;
+    color: #666666;
+}
+
+.reset-main-btn{
+    padding-top: 40px;
+}
+.reset-main-btn>a{
+    display: inline-block;
+    width: 180px;
+    height: 50px;
+    background-color: #0099cc;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    line-height: 50px;
+    /*text-align: center;*/
+}
+.reset-fail{
+    /*display: none !important;*/
+}
+
+.hand{
+    cursor: pointer;
+}
+/*面包屑*/
+.crumbs{
+    line-height: 52px;
+    border-bottom: 1px solid #e4e7ec;
+    color: #5a595a;
+    margin-bottom: 26px;
+}
+.fa-crumb{
+    color: #1190bf;
+}
