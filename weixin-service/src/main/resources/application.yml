@@ -19,9 +19,9 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: mysql://192.168.31.107:3306/wexin?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
-    username: wexin
-    password: wexin
+    url: mysql://192.168.3.175:3306/gonghuitest?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: gonghuitest
+    password: gongHUI!@34
   freemarker:
     template-loader-path: classpath:/templates/
     suffix: .ftl
