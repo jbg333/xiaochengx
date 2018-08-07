@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.weixin.entity.AccessTokenResponse;
 import com.weixin.note.api.service.IApiLoginPage;
 import com.weixin.util.Rt;
 import com.weixin.vo.Person;
@@ -31,8 +32,13 @@ public class StandingBookController {
 	@RequestMapping("/test/{name}")
 	public Person testApi(@PathVariable("name") String name) {
 		
-		  String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx00e5d810c8e6f47e&secret=c626013cfd82f410dc07a2fe2c43a49f";
-		String add = restTemplateOut.getForObject(url, String.class);
+		//通过小程序获得临时code
+		//021C6Uvp0SCkFp1vpzwp0PPOvp0C6Uva
+		
+		
+		
+		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx00e5d810c8e6f47e&secret=c626013cfd82f410dc07a2fe2c43a49f";
+		AccessTokenResponse add = restTemplateOut.getForObject(url, AccessTokenResponse.class);
 		System.out.println(add);
 		System.out.println(name);
 		//apiLoginPage.markRepay(100l, 99l);
