@@ -17,13 +17,15 @@ public class Rt<T> {
 	 */
 	private T data;
 	
-	private T page;
+	private RtPageUtils<T> page;//分页数据;
 	
-	public T getPage() {
+	
+
+	public RtPageUtils<T> getPage() {
 		return page;
 	}
 
-	public void setPage(T page) {
+	public void setPage(RtPageUtils<T> page) {
 		this.page = page;
 	}
 
@@ -71,16 +73,42 @@ public class Rt<T> {
 		Rt<T> result = new Rt<T>();
 		if(data instanceof String) {
 			result.mes = (String) data;
-		}else if(data instanceof RtPageUtils ) {
-			result.page = data;
 		}else {
 			result.data = data;
 		}
 		result.setCode(200);
 		return result;
 	}
+	/**
+	 * 返回成功消息
+	 * @param msg
+	 * @return
+	 */
+	public static  Rt<String> ok(String msg) {
+		Rt<String> r = new Rt<String>();
+		r.setCode(200);
+		r.setMes(msg);
+		r.setData(msg);
+		return r;
+	}
 	
+	public static <T> Rt<T> ok() {
+		Rt<T> r = new Rt<T>();
+		r.setCode(200);
+		return r;
+	}
 	
+	/**
+	 * 放入结果数据到 page
+	 * @param page
+	 * @return
+	 */
+	public static <T> Rt<T> ok(RtPageUtils<T> page) {
+		Rt<T> r = new Rt<T>();
+		r.setCode(200);
+		r.setPage(page);
+		return r;
+	}
 	public static  <T>  Rt<T> error(String data) {
 		Rt<T> result = new Rt<T>();
 		result.setMes(data);
