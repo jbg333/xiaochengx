@@ -1,9 +1,6 @@
-package com.weixin.note.serv.controller;
-
+package com.weixin.note.api.controller;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,22 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.github.pagehelper.PageInfo;
 import com.jia.weixin.feign.bill.IBillBookDetail;
 import com.weixin.entity.BillBookDetail;
-import com.weixin.note.serv.service.BillBookDetailService;
-import com.weixin.util.Query;
+import com.weixin.note.api.service.IApiBillBookDetail;
 import com.weixin.util.Rt;
-import com.weixin.util.RtPageUtils;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
 /**
  * 账单明细表
  * 
@@ -41,19 +32,16 @@ import io.swagger.annotations.ApiResponses;
 @Api(tags = "BillBookDetailController")
 @Controller
 @RequestMapping("billbookdetail")
-public class BillBookDetailController implements IBillBookDetail{
+public class BillBookDetailController{
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
-	private BillBookDetailService billBookDetailService;
-	
+	private IApiBillBookDetail apiBillBookDetail;
     /**
      * 跳转到列表页
      */
-    @RequiresPermissions("billbookdetail:list")
     public String list() {
         return "billbookdetail/list";
     }
-    
 	/**
 	 * 列表数据
 	 */
@@ -65,23 +53,17 @@ public class BillBookDetailController implements IBillBookDetail{
 			@ApiResponse(response=BillBookDetail.class,code = 200, message = "操作成功"),
 			@ApiResponse(code = 500, message = "内部错误，信息由msg字段返回")
 	})	
+	@RequestMapping(value = "/listData", method = {RequestMethod.GET})
     @ResponseBody
-	@RequestMapping(value = "/listData", method = {RequestMethod.POST})
-	@RequiresPermissions("billbookdetail:list")
 	public Rt<BillBookDetail> listData(@RequestParam Map<String, Object> params){
 		//查询列表数据
 		try {
-			Query query = new Query(params);
-	    	PageInfo<BillBookDetail> billBookDetailResult = billBookDetailService.queryPageList(query);
-	    	RtPageUtils<BillBookDetail> pageUtil = new RtPageUtils<>(billBookDetailResult.getList(), billBookDetailResult.getTotal(), query.getLimit(), query.getPage());
-	    	return Rt.ok(pageUtil);
+	    	return apiBillBookDetail.listData(params);
 	   } catch (Exception e) {
 			logger.error("查询列表失败",e);
 			return Rt.error("查询列表失败");
 		}
 	}
-	
-	
 	 /**
      * 
      * listDataNoPage:(不分页查询). 
@@ -99,33 +81,24 @@ public class BillBookDetailController implements IBillBookDetail{
 			@ApiResponse(code = 500, message = "内部错误，信息由msg字段返回")
 	})	
     @ResponseBody
-  	@RequestMapping(value = "/listDataNoPage", method = {RequestMethod.POST})
   	public Rt<List<BillBookDetail>> listDataNoPage(@RequestParam Map<String, Object> params){
   		//查询列表数据
-    	List<BillBookDetail> list = billBookDetailService.getList(params);
-  		return Rt.ok(list);
+  		return  apiBillBookDetail.listDataNoPage(params);
   	}
-
     /**
      * 跳转到新增页面
      **/
-    @RequestMapping(value = "/add", method = {RequestMethod.GET})
-    @RequiresPermissions("billbookdetail:save")
     public String add(){
         return "billbookdetail/add";
     }
-
     /**
      *   跳转到修改页面
      **/
-    @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
-    @RequiresPermissions("billbookdetail:update")
     public String edit(Model model, @PathVariable("id") Long id){
-		BillBookDetail billBookDetail = billBookDetailService.get(id);
-        model.addAttribute("model",billBookDetail);
+    	 Rt<BillBookDetail> info = apiBillBookDetail.info(id);
+        model.addAttribute("model",info.getData());
         return "billbookdetail/edit";
     }
-
 	/**
 	 * 信息
 	 */
@@ -138,20 +111,15 @@ public class BillBookDetailController implements IBillBookDetail{
 			@ApiResponse(code = 500, message = "内部错误，信息由msg字段返回")
 	})	
     @ResponseBody
-    @RequestMapping(value = "/info/{id}", method = {RequestMethod.GET})
-    @RequiresPermissions("billbookdetail:info")
     public Rt<BillBookDetail> info(@PathVariable("id") Long id){
 	    try {
-	       
-	        BillBookDetail billBookDetail = billBookDetailService.get(id);
-	        return Rt.ok(billBookDetail);
+	         Rt<BillBookDetail> info = apiBillBookDetail.info(id);
+	        return info;
 		} catch (Exception e) {
 				logger.error("查询失败",e);
 				return Rt.error("查询失败");
 		}
-    
     }
-
     /**
 	 * 保存
 	 */
@@ -164,18 +132,15 @@ public class BillBookDetailController implements IBillBookDetail{
 			@ApiResponse(code = 500, message = "内部错误，信息由msg字段返回")
 	})	
     @ResponseBody
-	@RequestMapping(value = "/save", method = {RequestMethod.POST})
-	@RequiresPermissions("billbookdetail:save")
 	public Rt<String> save(@RequestBody BillBookDetail billBookDetail){
 		 try {
-			billBookDetailService.save(billBookDetail);
+			apiBillBookDetail.save(billBookDetail);
 			return Rt.ok();
 		} catch (Exception e) {
 			logger.error("保存失败",e);
 			return Rt.error("保存失败");
 		}
 	}
-	
 	/**
 	 * 修改
 	 */
@@ -188,58 +153,46 @@ public class BillBookDetailController implements IBillBookDetail{
 			@ApiResponse(code = 500, message = "内部错误，信息由msg字段返回")
 	})	
     @ResponseBody
-	@RequestMapping(value = "/update", method = {RequestMethod.POST})
-	@RequiresPermissions("billbookdetail:update")
 	public Rt<String> update(@RequestBody BillBookDetail billBookDetail){
 		 try {
-			billBookDetailService.update(billBookDetail);
+			apiBillBookDetail.update(billBookDetail);
 			return Rt.ok();
 		} catch (Exception e) {
 			logger.error("修改失败",e);
 			return Rt.error("修改失败");
 		}
 	}
-
     /**
      * 启用
      */
     @ResponseBody
-    @RequestMapping(value = "/enable", method = {RequestMethod.POST})
-    @RequiresPermissions("billbookdetail:update")
     public Rt<String> enable(@RequestBody Long[] ids){
         /*String stateValue=StateEnum.ENABLE.getCode();
-		billBookDetailService.updateDataFlag(ids,stateValue);*/
+		apiBillBookDetail.updateDataFlag(ids,stateValue);*/
         return Rt.ok();
     }
     /**
      * 禁用
      */
     @ResponseBody
-    @RequestMapping(value = "/limit", method = {RequestMethod.POST})
-    @RequiresPermissions("billbookdetail:update")
     public Rt<String> limit(@RequestBody Long[] ids){
        /* String stateValue=StateEnum.LIMIT.getCode();
-		billBookDetailService.updateDataFlag(ids,stateValue);*/
+		apiBillBookDetail.updateDataFlag(ids,stateValue);*/
         return Rt.ok();
     }
-	
 	/**
 	 * 删除
 	 */
     @ResponseBody
-	@RequestMapping(value = "/delete", method = {RequestMethod.POST})
-	@RequiresPermissions("billbookdetail:delete")
 	public Rt<String> delete(@RequestBody Long[] ids){
 		 try {
-			billBookDetailService.deleteBatch(ids);
+			apiBillBookDetail.delete(ids);	
 			return Rt.ok();
 		} catch (Exception e) {
 			logger.error("删除失败",e);
 			return Rt.error("删除失败");
 		}
 	}
-	
-	
 	/**
 	 * 逻辑删除
 	 */
@@ -252,15 +205,13 @@ public class BillBookDetailController implements IBillBookDetail{
 			@ApiResponse(code = 500, message = "内部错误，信息由msg字段返回")
 	})	
     @ResponseBody
-	@RequestMapping(value = "/logicDelete/{id}", method = {RequestMethod.POST})
 	public Rt<String> logicDelete(@PathVariable("id") Long id){
 		 try {
-			billBookDetailService.logicDelete(id);
+			apiBillBookDetail.logicDelete(id);
 			return Rt.ok();
 		} catch (Exception e) {
 			logger.error("删除失败",e);
 			return Rt.error("删除失败");
 		}
 	}
-	
 }

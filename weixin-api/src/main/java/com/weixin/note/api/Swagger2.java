@@ -24,7 +24,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.weixin.note.api.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.weixin.note.api"))
                 .paths(PathSelectors.any())
                 .build();
     }

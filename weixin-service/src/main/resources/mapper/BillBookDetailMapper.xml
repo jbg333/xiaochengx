@@ -4,7 +4,7 @@
 <mapper namespace="com.weixin.note.serv.dao.BillBookDetailDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.weixin.entity.BillBookDetail" id="billBookDetailMap   ">
+    <resultMap type="com.weixin.entity.BillBookDetail" id="billBookDetailMap">
         <result property="id" column="id"/>
         <result property="userId" column="user_id"/>
         <result property="drcr" column="drcr"/>

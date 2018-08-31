@@ -1,4 +1,4 @@
-package com.weixin.note.serv.controller;
+package com.weixin.note.api.controller;
 import java.util.List;
 import java.util.Map;
 
@@ -12,13 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.github.pagehelper.PageInfo;
 import com.jia.weixin.feign.bill.IBillUser;
 import com.weixin.entity.BillUser;
-import com.weixin.note.serv.service.BillUserService;
-import com.weixin.util.Query;
+import com.weixin.note.api.service.IApiBillUser;
 import com.weixin.util.Rt;
-import com.weixin.util.RtPageUtils;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -35,10 +32,10 @@ import io.swagger.annotations.ApiResponses;
  */
 @Api(tags = "BillUserController")
 @Controller
-public class BillUserController implements IBillUser {
+public class BillUserController{
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
-	private BillUserService billUserService;
+	private IApiBillUser apiBillUser;
 	/**
 	 * 跳转到列表页
 	 */
@@ -49,11 +46,7 @@ public class BillUserController implements IBillUser {
 	public Rt<BillUser> listData(@RequestParam Map<String, Object> params) {
 		// 查询列表数据
 		try {
-			Query query = new Query(params);
-			PageInfo<BillUser> billUserResult = billUserService.queryPageList(query);
-			RtPageUtils<BillUser> pageUtil = new RtPageUtils<>(billUserResult.getList(), billUserResult.getTotal(),
-					query.getLimit(), query.getPage());
-			return Rt.ok(pageUtil);
+			return apiBillUser.listData(params);
 		} catch (Exception e) {
 			logger.error("查询列表失败", e);
 			return Rt.error("查询列表失败");
@@ -77,8 +70,7 @@ public class BillUserController implements IBillUser {
 	@ResponseBody
 	public Rt<List<BillUser>> listDataNoPage(@RequestParam Map<String, Object> params) {
 		// 查询列表数据
-		List<BillUser> list = billUserService.getList(params);
-		return Rt.ok(list);
+		return apiBillUser.listDataNoPage(params);
 	}
 	/**
 	 * 跳转到新增页面
@@ -90,8 +82,8 @@ public class BillUserController implements IBillUser {
 	 * 跳转到修改页面
 	 **/
 	public String edit(Model model, @PathVariable("id") Long id) {
-		BillUser billUser = billUserService.get(id);
-		model.addAttribute("model", billUser);
+		 Rt<BillUser> info = apiBillUser.info(id);
+		model.addAttribute("model", info.getData());
 		return "billuser/edit";
 	}
 	/**
@@ -100,8 +92,7 @@ public class BillUserController implements IBillUser {
 	@ResponseBody
 	public Rt<BillUser> info(@PathVariable("id") Long id) {
 		try {
-			BillUser billUser = billUserService.get(id);
-			return Rt.ok(billUser);
+			return apiBillUser.info(id);
 		} catch (Exception e) {
 			logger.error("查询失败", e);
 			return Rt.error("查询失败");
@@ -113,7 +104,7 @@ public class BillUserController implements IBillUser {
 	@ResponseBody
 	public Rt<String> save(@RequestBody BillUser billUser) {
 		try {
-			billUserService.save(billUser);
+			apiBillUser.save(billUser);
 			return Rt.ok();
 		} catch (Exception e) {
 			logger.error("保存失败", e);
@@ -126,7 +117,7 @@ public class BillUserController implements IBillUser {
 	@ResponseBody
 	public Rt<String> update(@RequestBody BillUser billUser) {
 		try {
-			billUserService.update(billUser);
+			apiBillUser.update(billUser);
 			return Rt.ok();
 		} catch (Exception e) {
 			logger.error("修改失败", e);
@@ -140,7 +131,7 @@ public class BillUserController implements IBillUser {
 	public Rt<String> enable(@RequestBody Long[] ids) {
 		/*
 		 * String stateValue=StateEnum.ENABLE.getCode();
-		 * billUserService.updateDataFlag(ids,stateValue);
+		 * apiBillUser.updateDataFlag(ids,stateValue);
 		 */
 		return Rt.ok();
 	}
@@ -151,7 +142,7 @@ public class BillUserController implements IBillUser {
 	public Rt<String> limit(@RequestBody Long[] ids) {
 		/*
 		 * String stateValue=StateEnum.LIMIT.getCode();
-		 * billUserService.updateDataFlag(ids,stateValue);
+		 * apiBillUser.updateDataFlag(ids,stateValue);
 		 */
 		return Rt.ok();
 	}
@@ -161,7 +152,7 @@ public class BillUserController implements IBillUser {
 	@ResponseBody
 	public Rt<String> delete(@RequestBody Long[] ids) {
 		try {
-			billUserService.deleteBatch(ids);
+			apiBillUser.delete(ids);
 			return Rt.ok();
 		} catch (Exception e) {
 			logger.error("删除失败", e);
@@ -172,7 +163,7 @@ public class BillUserController implements IBillUser {
 	@ResponseBody
 	public Rt<String> logicDelete(@PathVariable("id") Long id) {
 		try {
-			billUserService.logicDelete(id);
+			apiBillUser.logicDelete(id);
 			return Rt.ok();
 		} catch (Exception e) {
 			logger.error("删除失败", e);
