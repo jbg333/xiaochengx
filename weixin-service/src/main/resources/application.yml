@@ -22,9 +22,12 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #driver-class-name: com.alibaba.druid.pool.DruidData
     druid:
-      url: jdbc:mysql://192.168.3.175:3306/gonghui?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
-      username: gonghui
-      password: gongHUI!@34
+     # url: jdbc:mysql://192.168.3.175:3306/gonghui?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+      #username: gonghui
+     # password: gongHUI!@34
+      url: jdbc:mysql://192.168.31.5:3306/tx_wx_bill?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+      username: root
+      password: 123456
       driverClassName: com.mysql.jdbc.Driver
       initialSize: 5
       maxActive: 100
@@ -58,9 +61,3 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
-  
-   
-
- #jdbc:mysql://192.168.3.175:3306/gonghuitest?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
-#gonghuitest
-#gongHUI!@34

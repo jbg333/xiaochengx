@@ -1,6 +1,9 @@
 package com.weixin.note.api.controller;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.jia.weixin.feign.bill.IBillBookDetail;
+
 import com.weixin.entity.BillBookDetail;
 import com.weixin.note.api.service.IApiBillBookDetail;
 import com.weixin.util.Rt;
+import com.weixin.util.RtPageUtils;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -31,7 +36,7 @@ import io.swagger.annotations.ApiResponses;
  */
 @Api(tags = "BillBookDetailController")
 @Controller
-@RequestMapping("billbookdetail")
+@RequestMapping("/api/billbookdetail")
 public class BillBookDetailController{
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
@@ -58,7 +63,20 @@ public class BillBookDetailController{
 	public Rt<BillBookDetail> listData(@RequestParam Map<String, Object> params){
 		//查询列表数据
 		try {
-	    	return apiBillBookDetail.listData(params);
+			List<BillBookDetail> list = new ArrayList<>();
+			BillBookDetail d1 = new BillBookDetail();
+			BillBookDetail d2 = new BillBookDetail();
+			d1.setDrcr("借出");
+			d1.setCreateDatetime(new Date());
+			d1.setDrcr("借入");
+			d2.setCreateDatetime(new Date());
+			list.add(d1);
+			list.add(d2);
+			RtPageUtils<BillBookDetail> page = new RtPageUtils<>();
+			page.setList(list);
+			return Rt.ok(page);
+	    	//return apiBillBookDetail.listData(params);
+			
 	   } catch (Exception e) {
 			logger.error("查询列表失败",e);
 			return Rt.error("查询列表失败");
@@ -80,10 +98,23 @@ public class BillBookDetailController{
 			@ApiResponse(response=BillBookDetail.class,responseContainer="List",code = 200, message = "操作成功"),
 			@ApiResponse(code = 500, message = "内部错误，信息由msg字段返回")
 	})	
+    @RequestMapping(value = "wx/listData", method = {RequestMethod.GET})
     @ResponseBody
   	public Rt<List<BillBookDetail>> listDataNoPage(@RequestParam Map<String, Object> params){
+    	List<BillBookDetail> list = new ArrayList<>();
+		BillBookDetail d1 = new BillBookDetail();
+		BillBookDetail d2 = new BillBookDetail();
+		 d1.setId(1l);
+		 d2.setId(2l);
+		d1.setDrcr("借出");
+		d1.setCreateDatetime(new Date());
+		d2.setDrcr("借入");
+		d2.setCreateDatetime(new Date());
+		list.add(d1);
+		list.add(d2);
+    	return Rt.ok(list);
   		//查询列表数据
-  		return  apiBillBookDetail.listDataNoPage(params);
+  		//return  apiBillBookDetail.listDataNoPage(params);
   	}
     /**
      * 跳转到新增页面
@@ -204,6 +235,7 @@ public class BillBookDetailController{
 			@ApiResponse(response=String.class,code = 200, message = "操作成功"),
 			@ApiResponse(code = 500, message = "内部错误，信息由msg字段返回")
 	})	
+	@RequestMapping(value = "/logicDelete/{id}", method = {RequestMethod.POST})
     @ResponseBody
 	public Rt<String> logicDelete(@PathVariable("id") Long id){
 		 try {
