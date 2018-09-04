@@ -15,7 +15,7 @@
 		<groupId>com.jia.weixin.parent</groupId>
 		  <artifactId>weixin-parent</artifactId>
   			<version>1.0</version>
-		<relativePath/>
+		<relativePath>../weixin-parent/pom.xml</relativePath>
 	</parent>
 	
 	<dependencies>

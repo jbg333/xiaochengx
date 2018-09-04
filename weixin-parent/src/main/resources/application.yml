@@ -1,0 +1,19 @@
+redis:
+   connect:
+         type: single
+   host: 120.24.92.75
+   password: myredis
+   port: 6379
+#==sentinel==ha=====
+   master:
+          name:
+   sentinel:
+          first:
+          second:
+          third:
+   pool:
+        maxIdle: 100
+        maxTotal: 500
+        maxWaitMillis: 3000
+        testOnBorrow: true
+        testOnReturn: true
